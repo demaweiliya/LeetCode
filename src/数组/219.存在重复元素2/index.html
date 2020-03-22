@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>存在重复元素2</title>
+  </head>
+  <body>
+    <script>
+      let nums = [99, 99],
+        k = 2;
+
+      var containsNearbyDuplicate = function(nums, k) {
+        for (let i = 0; i < nums.length; i++) {
+          for (let j = i + 1; j < nums.length; j++) {
+            if (nums[i] === nums[j] && Math.abs(j - i) <= k) {
+              return true;
+            }
+          }
+        }
+        return false;
+      };
+
+      console.log(containsNearbyDuplicate(nums, k));
+    </script>
+  </body>
+</html>

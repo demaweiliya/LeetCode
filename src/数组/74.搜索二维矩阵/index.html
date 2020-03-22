@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {number[][]} matrix
+       * @param {number} target
+       * @return {boolean}
+       */
+      var searchMatrix = function(matrix, target) {
+        let breakCoords = [];
+        for (let i = 0; i < matrix.length; i++) {
+          if (!breakCoords.length) {
+            for (let j = 0; j < matrix[i].length; j++) {
+              if ((target = matrix[i][j])) {
+                return true;
+              }
+              if (target < matrix[i][j]) {
+                breakCoords = [j];
+                break;
+              }
+            }
+          } else {
+            if (target < matrix[i][breakCoords[1]]) {
+              for (let k = breakCoords[1]; k >= 0; k--) {
+                if ((target = matrix[i][k])) {
+                  return true;
+                }
+                if ((target = matrix[i][k])) {
+                  return true;
+                }
+              }
+            }
+          }
+        }
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>字谜分组</title>
+  </head>
+  <body>
+    <script>
+      let test = ["eat", "tea", "tan", "ate", "nat", "bat"];
+      var groupAnagrams = function(strs) {
+        const Map = {};
+        const result = [];
+        strs.forEach(str => {
+          let sortStr = str
+            .split("")
+            .sort()
+            .join("");
+          if (Map[sortStr]) {
+            Map[sortStr].push(str);
+          } else {
+            Map[sortStr] = [str];
+          }
+        });
+        Object.keys(Map).forEach(key => {
+          result.push(Map[key]);
+        });
+        return result;
+      };
+
+      var groupAnagrams = function(strs) {
+        const map = new Map();
+        for (let i = 0; i < strs.length; i++) {
+          const currentStr = strs[i]
+            .split("")
+            .sort()
+            .join("");
+          if (map.has(currentStr)) {
+            const val = map.get(currentStr);
+            val.push(strs[i]);
+            map.set(currentStr, val);
+          } else {
+            map.set(currentStr, [strs[i]]);
+          }
+        }
+        return Array.from(map.values());
+      };
+      console.log(groupAnagrams(test));
+    </script>
+  </body>
+</html>
