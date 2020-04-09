@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {number[]} nums
+       * @return {number[]}
+       */
+      var findDisappearedNumbers = function(nums) {
+        let res = [];
+        let sortNums = nums.sort((a, b) => {return a- b});
+        for (let i = 0; i < sortNums.length; i++) {
+          let index = sortNums[i] - 1;
+          [sortNums[i], sortNums[index]] = [sortNums[index], sortNums[i]];
+          console.log("nums,", index, sortNums);
+        }
+        for (let index = 0; index < sortNums.length; index++) {
+            if(sortNums[index] !== index + 1) {
+                res.push(index + 1);
+            }
+        }
+        return res;
+      };
+      console.log(findDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1]));
+    </script>
+  </body>
+</html>
